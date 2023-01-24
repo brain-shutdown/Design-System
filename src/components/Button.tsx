@@ -1,6 +1,61 @@
-import { darkTheme, styled } from '../../stitches.config';
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
+import { darkTheme, styled, config } from '../../stitches.config';
+import type * as Stitches from '@stitches/react';
 
-const Button = styled('button', {
+//============
+// TYPES
+//============
+type ButtonType = {
+	size?: '1' | '2' | '3' | '4' | '5' | 1 | 2 | 3 | 4 | 5 | undefined;
+	variant?: 'primary' | 'secondary' | 'error' | undefined;
+	outlined?: boolean | 'true' | undefined;
+	as?: 'button' | undefined;
+	CSS?: Stitches.CSS<typeof config>;
+	children?: ReactNode;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+
+export type AnchorType = {
+	as: 'a';
+	CSS?: Stitches.CSS<typeof config>;
+	children?: ReactNode;
+} & AnchorHTMLAttributes<HTMLAnchorElement>;
+
+//============
+// FUNCTION
+//============
+function Button(args: AnchorType | ButtonType) {
+	if (args.as === 'a') {
+		return <AnchorElement {...args} />;
+	}
+	return <ButtonElement {...args} />;
+}
+
+//============
+// STYLES
+//============
+const AnchorElement = styled('a', {
+	cursor: 'pointer',
+	color: '$link',
+	position: 'relative',
+	textDecoration: 'none',
+
+	'&::after': {
+		transition: 'width 0.3s cubic-bezier(.4,0,1,1)',
+		content: '',
+		position: 'absolute',
+		backgroundColor: '$link',
+		height: 2,
+		width: 0,
+		left: 0,
+		bottom: 0,
+	},
+
+	'&:hover::after': {
+		width: '100%',
+	},
+});
+
+const ButtonElement = styled('button', {
 	fontWeight: '$semibold',
 	cursor: 'pointer',
 	minWidth: '6rem',
@@ -63,6 +118,9 @@ const Button = styled('button', {
 			},
 		},
 		variant: {
+			//===================
+			// PRIMARY BUTTON
+			//===================
 			primary: {
 				color: 'white',
 				backgroundColor: '$primary700',
@@ -76,6 +134,9 @@ const Button = styled('button', {
 				},
 			},
 
+			//===================
+			// SECONDARY BUTTON
+			//===================
 			secondary: {
 				color: '$gray700',
 				backgroundColor: '$gray100',
@@ -102,6 +163,10 @@ const Button = styled('button', {
 					},
 				},
 			},
+
+			//===================
+			// ERROR BUTTON
+			//===================
 			error: {
 				color: 'white',
 				backgroundColor: '$error600',
@@ -114,6 +179,10 @@ const Button = styled('button', {
 				},
 			},
 		},
+
+		//===================
+		// OUTLINED BUTTON
+		//===================
 		outlined: {
 			true: {
 				backgroundColor: 'white',
@@ -131,12 +200,10 @@ const Button = styled('button', {
 		},
 	},
 
-	defaultVariants: {
-		variant: 'primary',
-		size: 2,
-	},
-
 	compoundVariants: [
+		//===================
+		// OUTLINED + ERROR
+		//===================
 		{
 			outlined: true,
 			variant: 'error',
@@ -154,6 +221,9 @@ const Button = styled('button', {
 				},
 			},
 		},
+		//===================
+		// OUTLINED + PRIMARY
+		//===================
 		{
 			variant: 'primary',
 			outlined: true,
@@ -172,6 +242,9 @@ const Button = styled('button', {
 				},
 			},
 		},
+		//=======================================
+		// OUTLINED + SECONDARY (SAME AS PRIMARY)
+		//=======================================
 		{
 			variant: 'secondary',
 			outlined: true,
@@ -208,6 +281,11 @@ const Button = styled('button', {
 			},
 		},
 	],
+
+	defaultVariants: {
+		variant: 'primary',
+		size: 2,
+	},
 });
 
 export default Button;

@@ -3,7 +3,7 @@ import { darkTheme, globalStyles } from '../stitches.config';
 
 // File Imports
 import Input from './components/Input';
-import Button from './components/Button';
+import ButtonType from './components/Button';
 
 // Icon Imports
 import { HiOutlineEnvelope } from 'react-icons/hi2';
