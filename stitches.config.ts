@@ -27,6 +27,7 @@ export const { styled, globalCss, css, keyframes, theme, createTheme, config } =
 			card: '#F6F7F9', // gray-05
 			highlight: '#E6F7FF', // blue-10
 			separator: '#EBECF0', // gray-10
+			border: '#D4D7DF',
 
 			// Primary Color
 			primary25: '#E6F6FA',
@@ -230,6 +231,7 @@ export const darkTheme = createTheme({
 		card: '#343A46', // gray-05
 		highlight: 'rgba(88,175,223,.1)', // blue-10
 		separator: '#343A46', // gray-10
+		border: '#404756',
 	},
 	shadows: {
 		lg: '0 0 0 1px rgba(255,255,255,.15), 0px 0.8px 2px rgba(0, 0, 0, 0.032), 0px 2.7px 6.7px rgba(0, 0, 0, 0.048), 0px 12px 30px rgba(0, 0, 0, 0.08)',
