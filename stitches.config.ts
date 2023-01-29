@@ -19,15 +19,15 @@ export const { styled, globalCss, css, keyframes, theme, createTheme, config } =
 			gray950: '#16181D',
 
 			// Main colors
-			title: '#23272F', // gray900
-			body: '#404756', // gray700
-			link: '#087EA4', // primary
-			syntax: '#EBECF0', // gray-10
-			background: '#FFFFFF', // white
-			card: '#F6F7F9', // gray-05
-			highlight: '#E6F7FF', // blue-10
-			separator: '#EBECF0', // gray-10
-			border: '#D4D7DF',
+			title: '$gray900',
+			body: '$gray700',
+			link: '$primary700',
+			syntax: '$gray100',
+			background: '#FFFFFF',
+			card: '$gray25',
+			highlight: '$primary25',
+			separator: '$gray100',
+			border: '$gray200',
 
 			// Primary Color
 			primary25: '#E6F6FA',
@@ -191,6 +191,8 @@ export const { styled, globalCss, css, keyframes, theme, createTheme, config } =
 			xxl: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
 			xxxl: '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
 			inner: 'inset 0 1px 4px 0 rgba(0, 0, 0, 0.05)',
+			inputFocus:
+				'0 0 0 0 rgb(255, 255, 255), 0 0 0 2px rgba(59, 130, 246, 0.5), inset 0 1px 4px 0 rgba(0, 0, 0, 0.05)',
 			focus: 'white 0 0 0 2px, $colors$primary600 0 0 0 3px',
 		},
 	},
@@ -223,15 +225,15 @@ export const { styled, globalCss, css, keyframes, theme, createTheme, config } =
 export const darkTheme = createTheme({
 	colors: {
 		// Text colors
-		title: '#F6F7F9', // gray900
-		body: '#EBECF0', // gray700
-		link: '#149ECA',
-		syntax: '#EBECF0', // gray-10
-		background: '#23272F',
-		card: '#343A46', // gray-05
-		highlight: 'rgba(88,175,223,.1)', // blue-10
-		separator: '#343A46', // gray-10
-		border: '#404756',
+		title: '$gray25',
+		body: '$gray100',
+		link: '$primary600',
+		syntax: '$gray100',
+		background: '$gray900',
+		card: '$gray800',
+		highlight: 'rgba(88,175,223,.1)',
+		separator: '$gray800',
+		border: '$gray700',
 	},
 	shadows: {
 		lg: '0 0 0 1px rgba(255,255,255,.15), 0px 0.8px 2px rgba(0, 0, 0, 0.032), 0px 2.7px 6.7px rgba(0, 0, 0, 0.048), 0px 12px 30px rgba(0, 0, 0, 0.08)',

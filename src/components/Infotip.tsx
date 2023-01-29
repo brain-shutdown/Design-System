@@ -14,7 +14,7 @@ const Infotip = ({ children, Icon, side }: props) => {
 		<Tooltip.Provider>
 			<Tooltip.Root>
 				<Tooltip.Trigger asChild>
-					<IconButton>
+					<IconButton aria-label='tooltipIcon'>
 						<Icon />
 					</IconButton>
 				</Tooltip.Trigger>
@@ -58,7 +58,7 @@ const TooltipContent = styled(Tooltip.Content, {
 	maxWidth: '21rem',
 	borderRadius: '$1',
 	padding: '$12 $16',
-	color: '$gray600',
+	color: '$body',
 	backgroundColor: '$card',
 	border: '1px solid $border',
 	boxShadow: '$lg',
@@ -74,7 +74,6 @@ const TooltipContent = styled(Tooltip.Content, {
 		'&[data-side="left"]': { animationName: slideRightAndFade },
 	},
 	[`.${darkTheme} &`]: {
-		color: 'white',
 		boxShadow: 'none',
 	},
 });
@@ -91,17 +90,17 @@ const IconButton = styled('button', {
 	display: 'inline-flex',
 	alignItems: 'center',
 	justifyContent: 'center',
-	color: '$gray500',
+	color: '$gray400',
 	'&:hover': {
 		color: '$gray600',
 		[`.${darkTheme} &`]: {
-			color: '$gray400',
+			color: '$gray300',
 		},
 	},
 
 	'& svg': {
-		height: 14,
-		width: 14,
+		height: 15,
+		width: 15,
 	},
 });
 
