@@ -1,56 +1,36 @@
-import React, { useState } from 'react';
-import { darkTheme, globalStyles } from '../stitches.config';
+import { FormEvent, useRef } from 'react';
+import { globalStyles } from '../stitches.config';
 
 // File Imports
 import Input from './components/Input';
-import ButtonType from './components/Button';
 
 // Icon Imports
 import { HiOutlineEnvelope } from 'react-icons/hi2';
 
 function App() {
-	const [email, setEmail] = useState('');
-	// const [theme, setTheme] = React.useState('theme-default');
+	const ref = useRef<HTMLInputElement>(null);
 
-	// React.useEffect(() => {
-	// 	console.log(document.body.classList);
-
-	// 	document.body.classList.remove('theme-default', darkTheme);
-	// 	document.body.classList.add(theme);
-	// }, [theme]);
-
-	function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+	function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		const value = event.target.value;
-		setEmail(value);
+		console.log(ref.current!.value);
 	}
 
 	globalStyles();
 	return (
 		<>
-			{/* <Button
-				style={{ position: 'fixed', zIndex: 999, right: 15, top: 15 }}
-				onClick={() => setTheme(theme === 'theme-default' ? darkTheme : 'theme-default')}>
-				Toggle theme
-			</Button> */}
-			<Button as='a' outlined variant='error'>
-				Click me
-			</Button>
-			<div>
+			<form onSubmit={handleSubmit}>
 				<Input
 					type='email'
 					label='email'
 					placeholder='Email Address'
 					name='email'
-					value={email}
 					Icon={HiOutlineEnvelope}
 					infoContent={'This is some content'}
-					onChange={onChange}
+					ref={ref}
 					error
 					errorMessage={'abc'}
-					disabled
 				/>
-			</div>
+			</form>
 		</>
 	);
 }
