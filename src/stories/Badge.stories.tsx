@@ -53,13 +53,9 @@ export default {
 		avatarUrl: {
 			name: 'Avatar URL',
 			type: { name: 'string', required: false },
-			description: 'Button size.',
+			description: 'Avatar Image URL',
 			defaultValue: '../../avatar.jpg',
-			control: 'text',
-			table: {
-				type: { summary: 'string' },
-				defaultValue: { summary: 'string' },
-			},
+			control: false,
 			if: { arg: 'variant', eq: 'avatar' },
 		},
 	},
