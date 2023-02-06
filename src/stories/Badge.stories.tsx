@@ -115,7 +115,7 @@ Avatar.args = {
 	children: 'Label',
 	size: 'md',
 	variant: 'avatar',
-	avatarUrl: '../../avatar.jpg',
+	avatarUrl: '../../avatar.png',
 };
 
 const Wrapper = styled('div', {
