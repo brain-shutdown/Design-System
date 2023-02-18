@@ -22,7 +22,7 @@ type UserType =
 			userName: string;
 	  };
 
-type AvatarProps = {
+export type AvatarProps = {
 	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'main' | 'profile';
 	status?: 'online' | 'offline' | 'away' | 'busy';
 } & UserType &
@@ -52,7 +52,7 @@ function Avatar({ size, status, userName, userType = 'avatar', ...args }: Avatar
 	if (userType === 'avatar' && !fallback) {
 		return (
 			<GenericAvatar size={size} status={status}>
-				<img {...args} onError={() => setFallback(true)} />
+				<img {...args} alt='avatar' onError={() => setFallback(true)} />
 			</GenericAvatar>
 		);
 	}
