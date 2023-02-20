@@ -1,29 +1,32 @@
 import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
-import { darkTheme, styled, config } from '../../stitches.config';
+import { darkTheme, styled, config, VariantProps, CSS } from '../../stitches.config';
 import type * as Stitches from '@stitches/react';
 
 //============
 // TYPES
 //============
-type ButtonType = {
-	size?: '1' | '2' | '3' | '4' | '5' | 1 | 2 | 3 | 4 | 5 | undefined;
-	variant?: 'primary' | 'secondary' | 'error' | undefined;
-	outlined?: boolean | 'true' | undefined;
-	as?: 'button' | undefined;
-	CSS?: Stitches.CSS<typeof config>;
-	children?: ReactNode;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export type AnchorType = {
-	as: 'a';
-	CSS?: Stitches.CSS<typeof config>;
-	children?: ReactNode;
-} & AnchorHTMLAttributes<HTMLAnchorElement>;
+type ButtonVariants = VariantProps<typeof ButtonElement>;
+type AnchorVariants = VariantProps<typeof AnchorElement>;
+
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+	ButtonVariants & {
+		as?: 'button' | undefined;
+		css?: CSS;
+		children: ReactNode;
+	};
+
+export type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement> &
+	AnchorVariants & {
+		as: 'a';
+		css?: CSS;
+		children: ReactNode;
+	};
 
 //============
 // FUNCTION
 //============
-function Button(args: AnchorType | ButtonType) {
+function Button(args: AnchorProps | ButtonProps) {
 	if (args.as === 'a') {
 		return <AnchorElement {...args} />;
 	}
