@@ -1,4 +1,4 @@
-import { DecoratorFn } from '@storybook/react';
+import { Decorator } from '@storybook/react';
 import { darkTheme, globalStyles } from '../stitches.config';
 import React from 'react';
 
@@ -13,7 +13,7 @@ export const parameters = {
 	},
 };
 
-const withTheme: DecoratorFn = (StoryFn, context) => {
+const withTheme: Decorator = (StoryFn, context) => {
 	// Get the active theme value from the global context
 	const theme = context.globals.theme;
 	const storyTheme = theme === 'dark' ? darkTheme : 'theme-default';
