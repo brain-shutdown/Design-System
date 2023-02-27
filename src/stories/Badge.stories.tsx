@@ -1,122 +1,72 @@
 import { styled } from '../../stitches.config';
 import Badge from '../components/Badge';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
 	title: 'Components/Badge',
 	component: Badge,
-	argTypes: {
-		children: {
-			name: 'Text',
-			type: { name: 'string', required: true },
-			defaultValue: 'Label',
-			description: 'Badge text',
-			table: {
-				type: { summary: 'string' },
-			},
-			control: {
-				type: 'text',
-			},
-		},
-		color: {
-			name: 'Color',
-			type: { name: 'number', required: true },
-			defaultValue: 1,
-			description: 'Button size in a scale from 1 to 6',
-			control: false,
-			table: {
-				type: { summary: 'number' },
-			},
-		},
-		size: {
-			name: 'Size',
-			type: { name: 'string', required: true },
-			defaultValue: 2,
-			description: 'Button size.',
-			control: 'select',
-			options: ['sm', 'md', 'lg'],
-			table: {
-				type: { summary: 'sm | md | lg' },
-				defaultValue: { summary: 'md' },
-			},
-		},
-		variant: {
-			name: 'Variant',
-			type: { name: 'string', required: false },
-			description: 'Button size.',
-			control: 'select',
-			options: ['leftArrowUp', 'rightArrow', 'close', 'update', 'avatar', undefined],
-			table: {
-				type: { summary: 'leftArrowUp | rightArrow | close | update | avatar' },
-			},
-		},
-		avatarUrl: {
-			name: 'Avatar URL',
-			type: { name: 'string', required: false },
-			description: 'Avatar Image URL',
-			defaultValue: '../../avatar.jpg',
-			control: false,
-			if: { arg: 'variant', eq: 'avatar' },
-		},
+	args: {
+		children: 'Label',
+	},
+} satisfies Meta<typeof Badge>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default = {
+	render: (args) => {
+		return (
+			<Wrapper>
+				<Badge {...args} color={1} />
+				<Badge {...args} color={2} />
+				<Badge {...args} color={3} />
+				<Badge {...args} color={4} />
+				<Badge {...args} color={5} />
+				<Badge {...args} color={6} />
+			</Wrapper>
+		);
 	},
 	args: {
-		variant: undefined,
+		size: 'sm',
 	},
-} as ComponentMeta<typeof Badge>;
+} satisfies Story;
 
-const Template: ComponentStory<typeof Badge> = (args) => {
-	return (
-		<Wrapper>
-			<Badge {...args} color={1} />
-			<Badge {...args} color={2} />
-			<Badge {...args} color={3} />
-			<Badge {...args} color={4} />
-			<Badge {...args} color={5} />
-			<Badge {...args} color={6} />
-		</Wrapper>
-	);
-};
+export const Update = {
+	...Default,
+	args: {
+		variant: 'update',
+	},
+} satisfies Story;
 
-export const Default = Template.bind({});
-Default.args = {
-	children: 'Label',
-	size: 'md',
-};
+export const ArrowUp = {
+	...Default,
+	args: {
+		variant: 'leftArrowUp',
+	},
+} satisfies Story;
 
-export const Update = Template.bind({});
-Update.args = {
-	children: 'Label',
-	size: 'md',
-	variant: 'update',
-};
+export const Close = {
+	...Default,
+	args: {
+		variant: 'close',
+	},
+} satisfies Story;
 
-export const ArrowUp = Template.bind({});
-ArrowUp.args = {
-	children: 'Label',
-	size: 'md',
-	variant: 'leftArrowUp',
-};
+export const ArrowRight = {
+	...Default,
+	args: {
+		variant: 'rightArrow',
+	},
+} satisfies Story;
 
-export const Close = Template.bind({});
-Close.args = {
-	children: 'Label',
-	size: 'md',
-	variant: 'close',
-};
-
-export const ArrowRight = Template.bind({});
-ArrowRight.args = {
-	children: 'Label',
-	size: 'md',
-	variant: 'rightArrow',
-};
-export const Avatar = Template.bind({});
-Avatar.args = {
-	children: 'Label',
-	size: 'md',
-	variant: 'avatar',
-	avatarUrl: '../../avatar.png',
-};
+export const Avatar = {
+	...Default,
+	args: {
+		variant: 'avatar',
+		avatarUrl: '../../avatar.png',
+	},
+} satisfies Story;
 
 const Wrapper = styled('div', {
 	display: 'flex',
