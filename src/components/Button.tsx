@@ -23,11 +23,18 @@ export type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement> &
 		children: ReactNode;
 	};
 
+type ObjectType<T> = T extends { as: 'a' }
+	? AnchorProps
+	: T extends { as?: 'button' | undefined }
+	? ButtonProps
+	: never;
+type TypeName = { as: 'a' } | { as?: 'button' | undefined };
+
 //============
 // FUNCTION
 //============
-function Button(args: AnchorProps | ButtonProps) {
-	if (args.as === 'a') {
+function Button<T extends TypeName>({ as, ...args }: ObjectType<T>) {
+	if (as === 'a') {
 		return <AnchorElement {...args} />;
 	}
 	return <ButtonElement {...args} />;
