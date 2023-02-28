@@ -1,26 +1,38 @@
-import { ReactNode } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { styled, keyframes, darkTheme } from '../../stitches.config';
-import { IconType } from 'react-icons';
 
-type props = {
-	Icon: IconType;
-	children: ReactNode;
-	side?: 'top' | 'right' | 'bottom' | 'left';
-};
+type TooltipPrimitiveProps = ComponentProps<typeof Tooltip.Root>;
+type TooltipProps = TooltipPrimitiveProps &
+	ComponentProps<typeof Tooltip.Content> & {
+		children: ReactNode;
+		content: ReactNode;
+		size?: 'sm' | 'md' | 'lg';
+	};
 
-const Infotip = ({ children, Icon, side }: props) => {
+const Infotip = ({
+	children,
+	content,
+	size,
+	open,
+	defaultOpen,
+	onOpenChange,
+	delayDuration,
+	disableHoverableContent,
+	...props
+}: TooltipProps) => {
+	const rootProps = { open, defaultOpen, onOpenChange, delayDuration, disableHoverableContent };
 	return (
 		<Tooltip.Provider>
-			<Tooltip.Root>
+			<Tooltip.Root {...rootProps}>
 				<Tooltip.Trigger asChild>
-					<IconButton aria-label='tooltipIcon'>
-						<Icon />
+					<IconButton aria-label='tooltipIcon' size={size}>
+						{children}
 					</IconButton>
 				</Tooltip.Trigger>
 				<Tooltip.Portal>
-					<TooltipContent sideOffset={5} side={side}>
-						{children}
+					<TooltipContent sideOffset={5} {...props}>
+						{content}
 						<TooltipArrow width={15} asChild>
 							<svg viewBox='0 0 30 20' xmlns='http://www.w3.org/2000/svg'>
 								<polyline points='0,0 15,20 30,0' />
@@ -97,10 +109,30 @@ const IconButton = styled('button', {
 			color: '$gray300',
 		},
 	},
-
-	'& svg': {
-		height: 15,
-		width: 15,
+	variants: {
+		size: {
+			sm: {
+				'& svg': {
+					height: 15,
+					width: 15,
+				},
+			},
+			md: {
+				'& svg': {
+					height: 30,
+					width: 35,
+				},
+			},
+			lg: {
+				'& svg': {
+					height: 45,
+					width: 45,
+				},
+			},
+		},
+	},
+	defaultVariants: {
+		size: 'sm',
 	},
 });
 
