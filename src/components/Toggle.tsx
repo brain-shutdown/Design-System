@@ -6,19 +6,19 @@ import { styled } from '../../stitches.config';
 //============
 type ToggleProps = {
 	size: 'sm' | 'md' | 'lg';
-	checked: boolean;
+	defaultChecked: boolean;
 	label?: string;
 };
 
 //============
 // FUNCTION
 //============
-function Toggle({ size, checked, label }: ToggleProps) {
+function Toggle({ size, defaultChecked, label }: ToggleProps) {
 	const uuid = useId();
 
 	const ToggleButton = () => (
 		<Wrapper size={size}>
-			<input type='checkbox' id={uuid} checked={checked} />
+			<input type='checkbox' id={uuid} defaultChecked={defaultChecked} />
 			<label htmlFor={uuid}>Toggle</label>
 		</Wrapper>
 	);

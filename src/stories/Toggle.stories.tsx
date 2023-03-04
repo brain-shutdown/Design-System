@@ -1,59 +1,47 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import Toggle from '../components/Toggle';
 
-export default {
+const meta = {
 	title: 'Components/Toggle',
 	component: Toggle,
-	argTypes: {
-		size: {
-			name: 'Size',
-			type: { name: 'string', required: true },
-			defaultValue: 2,
-			description: 'Toggle size.',
-			control: 'select',
-			options: ['sm', 'md', 'lg'],
-			table: {
-				type: { summary: 'sm | md | lg' },
-				defaultValue: { summary: 'md' },
-			},
-		},
-		label: {
-			name: 'Label',
-			type: { name: 'string', required: false },
-			defaultValue: 'Click me',
-			description: 'Toggle label text',
-			table: {
-				type: { summary: 'string' },
-				defaultValue: { summary: 'Click me' },
-			},
-			control: {
-				type: 'text',
-			},
-		},
+} satisfies Meta<typeof Toggle>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default = {
+	render: (args) => {
+		return <Toggle {...args} />;
 	},
-	args: {},
-} as ComponentMeta<typeof Toggle>;
+	args: {
+		size: 'md',
+		defaultChecked: false,
+	},
+} satisfies Story;
 
-const Template: ComponentStory<typeof Toggle> = (args) => {
-	return <Toggle {...args} />;
-};
+export const WithLabel = {
+	...Default,
+	args: {
+		label: 'Click Me',
+		defaultChecked: false,
+		size: 'md',
+	},
+} satisfies Story;
 
-export const Default = Template.bind({});
-Default.args = {
-	size: 'md',
-};
-export const WithLabel = Template.bind({});
-WithLabel.args = {
-	size: 'md',
-	label: 'Click Me',
-};
-export const Small = Template.bind({});
-Small.args = {
-	size: 'sm',
-	label: 'Click Me',
-};
-export const Large = Template.bind({});
-Large.args = {
-	size: 'lg',
-	label: 'Click Me',
-};
+export const Small = {
+	...Default,
+	args: {
+		label: 'Click Me',
+		defaultChecked: false,
+		size: 'sm',
+	},
+} satisfies Story;
+
+export const Large = {
+	...Default,
+	args: {
+		label: 'Click Me',
+		defaultChecked: false,
+		size: 'lg',
+	},
+} satisfies Story;
