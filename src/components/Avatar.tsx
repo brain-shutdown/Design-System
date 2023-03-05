@@ -14,11 +14,11 @@ type GenericAvatarProps = {
 
 type UserType =
 	| {
-			userType: 'blank' | 'avatar';
+			userType?: 'blank' | 'avatar';
 			userName?: string;
 	  }
 	| {
-			userType: 'initials';
+			userType?: 'initials';
 			userName: string;
 	  };
 
