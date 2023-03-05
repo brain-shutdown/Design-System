@@ -2,15 +2,14 @@ import { styled } from '../../stitches.config';
 import Avatar from '../components/Avatar';
 // import Avatar from '../components/Avatar';
 import AvatarLabel from '../components/AvatarLabel';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
 	title: 'Components/AvatarLabel',
 	component: AvatarLabel,
 	argTypes: {
 		children: {
 			name: 'Avatar',
-			type: { name: 'string', required: true },
 			description: 'User Avatar to display',
 			table: {
 				type: { summary: 'Avatar' },
@@ -19,40 +18,32 @@ export default {
 		},
 		name: {
 			name: 'Name',
-			type: { name: 'string', required: true },
 			description: 'User Name',
 			table: {
 				type: { summary: 'string' },
 			},
-			control: {
-				type: 'text',
-			},
 		},
 		email: {
 			name: 'Email',
-			type: { name: 'string', required: true },
 			description: 'User Email',
 			table: {
 				type: { summary: 'string' },
 			},
-			control: {
-				type: 'text',
-			},
 		},
 	},
 	args: {},
-} as ComponentMeta<typeof AvatarLabel>;
+} satisfies Meta<typeof AvatarLabel>;
 
-const Template: ComponentStory<typeof AvatarLabel> = (args) => {
-	return (
-		<AvatarLabel {...args}>
-			<Avatar size='md' src='../../avatar.png' alt='avatar' userType='avatar' />
-		</AvatarLabel>
-	);
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-	name: 'John Doe',
-	email: 'johndoe@gmail.com',
-};
+export const Default = {
+	render: (args) => {
+		return <AvatarLabel {...args} />;
+	},
+	args: {
+		name: 'John Doe',
+		email: 'johndoe@gmail.com',
+		children: <Avatar size='md' src='../../avatar.png' alt='avatar' userType='avatar' />,
+	},
+} satisfies Story;
