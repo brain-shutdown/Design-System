@@ -1,7 +1,7 @@
 import { darkTheme, styled } from '../../stitches.config';
 import { BsQuestionCircle, BsExclamationCircle } from 'react-icons/bs';
 import Infotip from './Infotip';
-import { ReactNode, ChangeEvent, forwardRef, useState, InputHTMLAttributes } from 'react';
+import { ChangeEvent, forwardRef, useState, InputHTMLAttributes, HTMLInputTypeAttribute, ComponentProps } from 'react';
 import { IconType } from 'react-icons';
 
 //============
@@ -12,7 +12,8 @@ type LabelProps = { label: string; labelSide: 'left' | 'top' } | { label?: undef
 
 type Props = {
 	Icon?: IconType;
-	infoContent?: ReactNode;
+	tooltipProps?: Omit<ComponentProps<typeof Infotip>, 'children'>;
+	type: Extract<HTMLInputTypeAttribute, 'email' | 'number' | 'password' | 'range'>;
 } & ErrorProps &
 	LabelProps &
 	InputHTMLAttributes<HTMLInputElement>;
@@ -22,7 +23,7 @@ type Props = {
 //============
 const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
 	const [value, setValue] = useState('');
-	const { label, Icon, infoContent, error, errorMessage, labelSide, ...inputArgs } = props;
+	const { label, Icon, error, errorMessage, labelSide, tooltipProps, ...inputArgs } = props;
 
 	function onChange(event: ChangeEvent<HTMLInputElement>) {
 		event.preventDefault();
@@ -36,7 +37,7 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
 				<div className='input--element'>
 					{Icon && <Icon />}
 					<input id={inputArgs.name} ref={ref} value={value} onChange={onChange} {...inputArgs} />
-					{infoContent && !error && <Infotip Icon={BsQuestionCircle}>{infoContent}</Infotip>}
+					{tooltipProps && !error && <Infotip {...tooltipProps}>{<BsQuestionCircle />}</Infotip>}
 					{error && <BsExclamationCircle className='errorIcon' />}
 				</div>
 				{error && errorMessage && <span>{errorMessage}</span>}
