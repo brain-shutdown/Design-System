@@ -17,18 +17,10 @@ const meta = {
 		status: {
 			name: 'Status',
 			description: 'Online status indicator.',
-
-			//   table: {
-			//     type: { summary: 'online | away | offline | busy | undefined' },
-			//   },
 		},
 		userType: {
 			name: 'User Type',
 			description: 'Shows avatar picture, the user name initials or simply a blank user.',
-			//   table: {
-			//     type: { summary: 'initials | blank | avatar' },
-			//     defaultValue: { summary: 'avatar' },
-			//   },
 		},
 		userName: {
 			name: 'User Name',
