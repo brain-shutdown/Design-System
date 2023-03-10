@@ -41,10 +41,6 @@ const meta = {
 			},
 			if: { arg: 'error', neq: false },
 		},
-		// infoContent: {
-		// 	name: 'Tooltip Content',
-		// 	description: 'Displays informative text to the user.',
-		// },
 		label: {
 			name: 'Label',
 			description: 'Shows a label text next to the input.',
@@ -125,18 +121,22 @@ export const Warning = {
 } satisfies Story;
 
 export const WarningLabelLeft = {
-	...LabelLeft,
+	...Default,
 	args: {
 		error: true,
 		errorMessage: 'Error message',
+		label: 'Email',
+		labelSide: 'left',
 	},
 } satisfies Story;
 
 export const WarningLabelTop = {
-	...LabelTop,
+	...Default,
 	args: {
 		error: true,
 		errorMessage: 'Error message',
+		label: 'Email',
+		labelSide: 'top',
 	},
 } satisfies Story;
 
