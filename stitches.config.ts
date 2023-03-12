@@ -195,7 +195,7 @@ export const { styled, globalCss, css, keyframes, theme, createTheme, config } =
 			inner: 'inset 0 1px 4px 0 rgba(0, 0, 0, 0.05)',
 			inputFocus:
 				'0 0 0 0 rgb(255, 255, 255), 0 0 0 2px rgba(59, 130, 246, 0.5), inset 0 1px 4px 0 rgba(0, 0, 0, 0.05)',
-			focus: 'white 0 0 0 2px, $colors$primary600 0 0 0 3px',
+			focus: 'white 0 0 0 1.25px, $colors$primary600 0 0 0 2.25px',
 		},
 	},
 	media: {
