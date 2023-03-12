@@ -4,7 +4,7 @@ import { styled } from '../../stitches.config';
 //============
 // TYPES
 //============
-type ToggleProps = {
+type SwitchProps = {
 	size: 'sm' | 'md' | 'lg';
 	defaultChecked: boolean;
 	label?: string;
@@ -13,10 +13,10 @@ type ToggleProps = {
 //============
 // FUNCTION
 //============
-function Toggle({ size, defaultChecked, label }: ToggleProps) {
+function Switch({ size, defaultChecked, label }: SwitchProps) {
 	const uuid = useId();
 
-	const ToggleButton = () => (
+	const SwitchButton = () => (
 		<Wrapper size={size}>
 			<input type='checkbox' id={uuid} defaultChecked={defaultChecked} />
 			<label htmlFor={uuid}>Toggle</label>
@@ -26,12 +26,12 @@ function Toggle({ size, defaultChecked, label }: ToggleProps) {
 	if (label) {
 		return (
 			<LabelWrapper size={size}>
-				<ToggleButton />
+				<SwitchButton />
 				<span className='label'>{label}</span>
 			</LabelWrapper>
 		);
 	}
-	return <ToggleButton />;
+	return <SwitchButton />;
 }
 
 //============
@@ -89,7 +89,7 @@ const Wrapper = styled('span', {
 		position: 'absolute',
 		background: 'white',
 		borderRadius: '$round',
-		transition: '0.3s',
+		transition: '0.15s',
 	},
 
 	'& input:checked + label': {
@@ -163,4 +163,4 @@ const Wrapper = styled('span', {
 	},
 });
 
-export default Toggle;
+export default Switch;

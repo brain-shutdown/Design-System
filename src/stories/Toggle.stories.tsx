@@ -1,17 +1,17 @@
 import { Meta, StoryObj } from '@storybook/react';
-import Toggle from '../components/Toggle';
+import Switch from '../components/Switch';
 
 const meta = {
-	title: 'Components/Toggle',
-	component: Toggle,
-} satisfies Meta<typeof Toggle>;
+	title: 'Components/Switch',
+	component: Switch,
+} satisfies Meta<typeof Switch>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {
 	render: (args) => {
-		return <Toggle {...args} />;
+		return <Switch {...args} />;
 	},
 	args: {
 		size: 'md',
