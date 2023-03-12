@@ -54,7 +54,7 @@ const CheckboxRoot = styled(RadixCheckbox.Root, {
 		boxShadow: '$focus',
 	},
 
-	'&[aria-checked=true]': {
+	'&[data-state="checked"]': {
 		backgroundColor: '$primary50',
 		borderColor: '$primary600',
 	},
