@@ -84,3 +84,14 @@ export const Large = {
 		indeterminate: false,
 	},
 } satisfies Story;
+
+export const Disabled = {
+	...Default,
+	args: {
+		id: '4',
+		size: 'sm',
+		label: 'Accept Terms and Conditions',
+		disabled: true,
+		defaultChecked: false,
+	},
+} satisfies Story;

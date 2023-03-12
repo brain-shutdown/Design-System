@@ -19,13 +19,17 @@ type CheckboxProps = {
 // FUNCTION
 //============
 const Checkbox = forwardRef<ElementRef<typeof CheckboxRoot>, CheckboxProps>(
-	({ size, indeterminate, label, ...rest }, forwardRef) => {
+	({ size, indeterminate, label, ...checkboxProps }, forwardRef) => {
 		return (
 			<StyledCheckBox size={size}>
-				<CheckboxRoot {...rest} ref={forwardRef} aria-label='checkbox'>
+				<CheckboxRoot {...checkboxProps} ref={forwardRef} aria-label='checkbox'>
 					<CheckboxIndicator>{indeterminate ? <RxMinus /> : <RxCheck />}</CheckboxIndicator>
 				</CheckboxRoot>
-				{label && <label htmlFor={rest.id}>{label}</label>}
+				{label && (
+					<Label htmlFor={checkboxProps.id} disabled={checkboxProps.disabled}>
+						{label}
+					</Label>
+				)}
 			</StyledCheckBox>
 		);
 	}
@@ -34,6 +38,22 @@ const Checkbox = forwardRef<ElementRef<typeof CheckboxRoot>, CheckboxProps>(
 //============
 // STYLES
 //============
+const Label = styled('label', {
+	lineHeight: 1,
+	variants: {
+		disabled: {
+			true: {
+				opacity: 0.7,
+			},
+		},
+	},
+});
+
+const CheckboxIndicator = styled(RadixCheckbox.Indicator, {
+	display: 'flex',
+	alignItems: 'center',
+	color: '$primary600',
+});
 
 const CheckboxRoot = styled(RadixCheckbox.Root, {
 	all: 'unset',
@@ -46,24 +66,34 @@ const CheckboxRoot = styled(RadixCheckbox.Root, {
 	border: '1px solid $gray300',
 	boxShadow: '$md',
 
-	'&:hover': {
+	'&:enabled:hover': {
 		backgroundColor: '$primary50',
 		borderColor: '$primary600',
 	},
+
 	'&:focus-visible': {
 		boxShadow: '$focus',
+	},
+
+	'&:disabled': {
+		boxShadow: '$xs',
+		backgroundColor: '$gray100',
+		cursor: 'default',
 	},
 
 	'&[data-state="checked"]': {
 		backgroundColor: '$primary50',
 		borderColor: '$primary600',
-	},
-});
 
-const CheckboxIndicator = styled(RadixCheckbox.Indicator, {
-	display: 'flex',
-	alignItems: 'center',
-	color: '$primary600',
+		'&:disabled': {
+			backgroundColor: '$gray100',
+			borderColor: '$gray400',
+
+			[`& ${CheckboxIndicator}`]: {
+				color: '$gray400',
+			},
+		},
+	},
 });
 
 const StyledCheckBox = styled('div', {
