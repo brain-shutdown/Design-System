@@ -193,6 +193,8 @@ export const { styled, globalCss, css, keyframes, theme, createTheme, config } =
 			xxl: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
 			xxxl: '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
 			inner: 'inset 0 1px 4px 0 rgba(0, 0, 0, 0.05)',
+			innerBorder: 'inset 0 0 0 1px rgba(0, 0, 0, 0.08)',
+			outerBorder: '0 0 0 1px rgba(0, 0, 0, 0.1)',
 			inputFocus:
 				'0 0 0 0 rgb(255, 255, 255), 0 0 0 2px rgba(59, 130, 246, 0.5), inset 0 1px 4px 0 rgba(0, 0, 0, 0.05)',
 			focus: 'white 0 0 0 1.25px, $colors$primary600 0 0 0 2.25px',
@@ -234,11 +236,13 @@ export const darkTheme = createTheme({
 		background: '$gray900',
 		card: '$gray800',
 		highlight: 'rgba(88,175,223,.1)',
-		separator: '$gray800',
-		border: '$gray700',
+		separator: '$gray700',
+		border: '$gray600',
 	},
 	shadows: {
 		lg: '0 0 0 1px rgba(255,255,255,.15), 0px 0.8px 2px rgba(0, 0, 0, 0.032), 0px 2.7px 6.7px rgba(0, 0, 0, 0.048), 0px 12px 30px rgba(0, 0, 0, 0.08)',
+		innerBorder: 'inset 0 0 0 1px rgba(255, 255, 255, 0.08)',
+		outerBorder: '0 0 0 1px rgba(255, 255, 255, 0.1)',
 	},
 });
 

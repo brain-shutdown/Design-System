@@ -34,7 +34,7 @@ const withTheme: Decorator = (StoryFn, context) => {
 	return (
 		<>
 			{globalStyles()}
-			<StoryFn />
+			{StoryFn()}
 		</>
 	);
 };
