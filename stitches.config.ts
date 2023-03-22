@@ -28,7 +28,7 @@ export const { styled, globalCss, css, keyframes, theme, createTheme, config } =
 			background: '#FFFFFF',
 			card: '$gray25',
 			highlight: '$primary25',
-			separator: '$gray100',
+			separator: '$gray200',
 			border: '$gray200',
 
 			// Primary Color
@@ -236,7 +236,7 @@ export const darkTheme = createTheme({
 		background: '$gray900',
 		card: '$gray800',
 		highlight: 'rgba(88,175,223,.1)',
-		separator: '$gray700',
+		separator: '$gray500',
 		border: '$gray600',
 	},
 	shadows: {
