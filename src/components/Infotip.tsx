@@ -1,10 +1,11 @@
 import { ComponentProps, ReactNode } from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
-import { styled, keyframes, darkTheme } from '../../stitches.config';
+import { styled, keyframes, darkTheme, CSS } from '../../stitches.config';
 
 type TooltipPrimitiveProps = ComponentProps<typeof Tooltip.Root>;
 type TooltipProps = TooltipPrimitiveProps &
 	ComponentProps<typeof Tooltip.Content> & {
+		css?: CSS;
 		children: ReactNode;
 		content: ReactNode;
 		size?: 'sm' | 'md' | 'lg';
