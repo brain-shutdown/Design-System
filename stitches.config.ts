@@ -232,7 +232,7 @@ export const darkTheme = createTheme({
 		title: '$gray25',
 		body: '$gray100',
 		link: '$primary600',
-		syntax: '$gray100',
+		syntax: '$gray700',
 		background: '$gray900',
 		card: '$gray800',
 		highlight: 'rgba(88,175,223,.1)',
