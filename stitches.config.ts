@@ -17,6 +17,7 @@ export const { styled, globalCss, css, keyframes, theme, createTheme, config } =
 			gray600: '#4E5769',
 			gray700: '#404756',
 			gray800: '#343A46',
+			gray850: '#303741',
 			gray900: '#23272F',
 			gray950: '#16181D',
 
