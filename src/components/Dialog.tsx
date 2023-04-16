@@ -45,7 +45,7 @@ export const DialogTitle = styled(DialogPrimitive.Title, {
 });
 
 export const DialogDescription = styled(DialogPrimitive.Description, {
-	margin: '10px 0 40px',
+	marginBottom: '$32',
 	fontSize: '$sm',
 	lineHeight: 1.5,
 });
