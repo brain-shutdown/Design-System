@@ -13,7 +13,7 @@ type LabelProps = { label: string; labelSide: 'left' | 'top' } | { label?: undef
 type Props = {
 	Icon?: IconType;
 	tooltipProps?: Omit<ComponentProps<typeof Infotip>, 'children'>;
-	type: Extract<HTMLInputTypeAttribute, 'email' | 'number' | 'password' | 'range'>;
+	type?: Extract<HTMLInputTypeAttribute, 'email' | 'number' | 'password' | 'range' | 'text'>;
 } & ErrorProps &
 	LabelProps &
 	InputHTMLAttributes<HTMLInputElement>;
@@ -50,6 +50,7 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
 // STYLES
 //============
 const Wrapper = styled('div', {
+	width: '100%',
 	'& .input--warning': {
 		display: 'flex',
 		flexDirection: 'column',
@@ -60,7 +61,7 @@ const Wrapper = styled('div', {
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
-		width: '25rem',
+		width: '100%',
 		px: '$16',
 		py: '0.625rem',
 		gap: '$8',
@@ -129,6 +130,10 @@ const Wrapper = styled('div', {
 				flexDirection: 'row',
 				alignItems: 'baseline',
 				gap: '$12',
+
+				'& .input--warning': {
+					flex: 1,
+				},
 			},
 			top: {
 				display: 'flex',
