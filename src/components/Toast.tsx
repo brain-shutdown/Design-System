@@ -11,7 +11,7 @@ import { BsFillInfoCircleFill, BsFillExclamationTriangleFill } from 'react-icons
 type ToastProviderPrimitiveProps = Omit<ComponentProps<typeof ToastPrimitive.Provider>, 'swipeDirection'>;
 type ToastViewportPrimitiveProps = Omit<ComponentProps<typeof ToastPrimitive.Viewport>, 'label'>;
 type ToastViewportVariantProps = VariantProps<typeof ToastViewport>;
-type ToastContainerProps = {
+type ToastProviderProps = {
 	css?: CSS;
 	children?: ReactNode;
 	actionButton?: ReactNode;
@@ -58,7 +58,7 @@ const swipeDirection = new Map([
 
 const ToastContext = React.createContext<ToastRef | null>(null);
 
-export const ToastProvider = React.forwardRef<ToastRef, ToastContainerProps>((props, forwardedRef) => {
+export const ToastProvider = (props: ToastProviderProps) => {
 	const { actionButton, position = 'bottom-right', children, altText, ...providerProps } = props;
 	const [toasts, setToasts] = React.useState(new Map());
 	const toastElementsMapRef = React.useRef(new Map());
@@ -183,7 +183,7 @@ export const ToastProvider = React.forwardRef<ToastRef, ToastContainerProps>((pr
 			</ToastPrimitive.Provider>
 		</ToastContext.Provider>
 	);
-});
+};
 
 const Toast = (props: SingleToastProps) => {
 	const { toast, id, sortToasts, toastElements, children, altText = 'Undo', ...toastProps } = props;
