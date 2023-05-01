@@ -33,8 +33,8 @@ type TypeName = { as: 'a' } | { as?: 'button' | undefined };
 //============
 // FUNCTION
 //============
-function Button<T extends TypeName>({ as, ...args }: ObjectType<T>) {
-	if (as === 'a') {
+function Button<T extends TypeName>({ ...args }: ObjectType<T>) {
+	if (args.as === 'a') {
 		return <AnchorElement {...args} />;
 	}
 	return <ButtonElement {...args} />;
