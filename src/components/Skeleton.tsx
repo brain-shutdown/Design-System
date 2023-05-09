@@ -1,4 +1,4 @@
-import { styled, keyframes } from '../../stitches.config';
+import { styled, keyframes, darkTheme } from '../../stitches.config';
 
 const pulse = keyframes({
 	'0%': { opacity: 0 },
@@ -9,6 +9,13 @@ export const Skeleton = styled('div', {
 	backgroundColor: '$gray100',
 	position: 'relative',
 	overflow: 'hidden',
+
+	[`.${darkTheme} &`]: {
+		backgroundColor: '$gray600',
+		'&::after': {
+			backgroundColor: '$gray500',
+		},
+	},
 
 	'&::after': {
 		animationName: `${pulse}`,
