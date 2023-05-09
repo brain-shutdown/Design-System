@@ -1,7 +1,6 @@
 import React, { ComponentProps, ElementRef } from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { styled, CSS, darkTheme, VariantProps } from '../../stitches.config';
-import { flushSync } from 'react-dom';
 
 //============
 // TYPES
